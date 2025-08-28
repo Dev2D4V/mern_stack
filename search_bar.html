@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Search Page</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background-color: #f4f4f4; }
+
+    .navbar {
+      display: flex; justify-content: space-between; align-items: center;
+      background-color: #333; padding: 10px 20px;
+    }
+    .navbar .logo { color: #fff; font-size: 20px; font-weight: bold; }
+    .navbar ul { list-style: none; display: flex; margin: 0; padding: 0; }
+    .navbar ul li { margin: 0 15px; }
+    .navbar ul li a { color: #fff; text-decoration: none; font-size: 16px; transition: color .3s; }
+    .navbar ul li a:hover { color: #ff9800; }
+
+    .search-box { display: flex; align-items: center; }
+    .search-box input[type="text"] {
+      padding: 5px; border: none; border-radius: 3px 0 0 3px; outline: none;
+    }
+    .search-box button {
+      padding: 6px 10px; border: none; background-color: #ff9800; color: #fff; cursor: pointer;
+      border-radius: 0 3px 3px 0; transition: background-color .3s;
+    }
+    .search-box button:hover { background-color: #e68a00; }
+
+    .container {
+      max-width: 900px; margin: 20px auto; background: #fff; padding: 20px; border-radius: 5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,.1);
+    }
+    h1 { color: #333; }
+    p { color: #666; line-height: 1.6; }
+
+    .results { margin-top: 20px; }
+    .result-item {
+      display: flex; align-items: flex-start; padding: 10px; border-bottom: 1px solid #ddd;
+    }
+    .result-item:last-child { border-bottom: none; }
+
+    .result-item img {
+      width: 80px; height: 60px; object-fit: cover; border-radius: 4px; margin-right: 15px;
+      display: block;
+    }
+    .result-text h3 { margin: 0; color: #0073e6; }
+    .result-text p { margin: 5px 0 0; color: #555; }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">MySearch</div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="search-box">
+      <input type="text" placeholder="Search..." />
+      <button>Search</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Welcome to MySearch</h1>
+    <p>Type a query into the search bar above to find useful results. Below is an example of what search results might look like.</p>
+
+    <div class="results">
+      <div class="result-item">
+        <img
+          loading="lazy"
+          alt="HTML"
+          src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="60"><rect width="100%" height="100%" fill="%23e3f2fd"/><text x="50%" y="50%" font-family="Arial" font-size="16" fill="%230073e6" dominant-baseline="middle" text-anchor="middle">HTML</text></svg>' />
+        <div class="result-text">
+          <h3>Result 1: HTML Basics</h3>
+          <p>Learn the fundamentals of HTML, the backbone of all web pages.</p>
+        </div>
+      </div>
+
+      <div class="result-item">
+        <img
+          loading="lazy"
+          alt="CSS"
+          src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="60"><rect width="100%" height="100%" fill="%23e8f5e9"/><text x="50%" y="50%" font-family="Arial" font-size="16" fill="%23008a3a" dominant-baseline="middle" text-anchor="middle">CSS</text></svg>' />
+        <div class="result-text">
+          <h3>Result 2: CSS Styling</h3>
+          <p>Explore how CSS makes web pages beautiful and responsive.</p>
+        </div>
+      </div>
+
+      <div class="result-item">
+        <img
+          loading="lazy"
+          alt="JavaScript"
+          src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="60"><rect width="100%" height="100%" fill="%23fff8e1"/><text x="50%" y="50%" font-family="Arial" font-size="14" fill="%23f57c00" dominant-baseline="middle" text-anchor="middle">JavaScript</text></svg>' />
+        <div class="result-text">
+          <h3>Result 3: JavaScript Guide</h3>
+          <p>Discover how JavaScript adds interactivity and functionality to websites.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+``
