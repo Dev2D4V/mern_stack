@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Blog with Images</title>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>My Blog</h1>
+    <p>Welcome to my simple blog made with only HTML</p>
+
+    <!-- Inline SVG banner via data URI (very reliable) -->
+    <img
+      src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='900' height='200'><rect width='100%' height='100%' fill='%23e8eef6'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='28' fill='%23033'>My Blog Banner</text></svg>"
+      alt="Blog Banner" width="900" height="200">
+    <hr>
+  </header>
+
+  <!-- Main (Blog Content) -->
+  <main>
+    <article>
+      <h2>Post 1: Learning HTML</h2>
+      <p><small>August 27, 2025</small></p>
+
+      <!-- External placeholder image (HTTPS) -->
+      <img src="https://picsum.photos/seed/html/600/250" alt="Learning HTML Image" width="600" height="250">
+
+      <p>Today I created my first blog page using only HTML. It's the foundation of every website.</p>
+      <hr>
+    </article>
+
+    <article>
+      <h2>Post 2: Why I Like Coding</h2>
+      <p><small>August 26, 2025</small></p>
+
+      <img src="https://picsum.photos/seed/coding/600/250" alt="Coding Image" width="600" height="250">
+
+      <p>Coding helps me turn ideas into reality. Next I'll learn CSS and JavaScript.</p>
+      <hr>
+    </article>
+
+    <article>
+      <h2>Post 3: My Future Goals</h2>
+      <p><small>August 25, 2025</small></p>
+
+      <img src="https://picsum.photos/seed/goals/600/250" alt="Future Goals Image" width="600" height="250">
+
+      <p>My next step is to build portfolios and complete full-stack projects.</p>
+      <hr>
+    </article>
+
+    <p>Embedded test image (should be present even if external images fail):</p>
+    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=" alt="test" width="1" height="1">
+  </main>
+
+  <footer>
+    <p>&copy; 2025 My Blog | Created with HTML only</p>
+  </footer>
+
+</body>
+</html>

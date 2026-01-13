@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Page Navbar</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Navbar styling */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      padding: 10px 20px;
+    }
+
+    .navbar .logo {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar ul li {
+      margin: 0 15px;
+    }
+
+    .navbar ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    .navbar ul li a:hover {
+      color: #ff9800;
+    }
+
+    /* Search bar */
+    .search-box {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box input[type="text"] {
+      padding: 5px;
+      border: none;
+      border-radius: 3px 0 0 3px;
+      outline: none;
+    }
+
+    .search-box button {
+      padding: 6px 10px;
+      border: none;
+      background-color: #ff9800;
+      color: white;
+      cursor: pointer;
+      border-radius: 0 3px 3px 0;
+      transition: background-color 0.3s;
+    }
+
+    .search-box button:hover {
+      background-color: #e68a00;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">MySearch</div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="search-box">
+      <input type="text" placeholder="Search...">
+      <button>Search</button>
+    </div>
+  </nav>
+
+</body>
+</html>
