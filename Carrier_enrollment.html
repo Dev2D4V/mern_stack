@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career Enrollment Portal</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    animation: fadeIn 1s ease;
+}
+
+header {
+    padding: 30px;
+    text-align: center;
+    background: linear-gradient(135deg, #43cea2, #185a9d);
+    color: white;
+}
+
+section {
+    padding: 30px;
+}
+
+h2 {
+    margin-bottom: 18px;
+    color: #ffffff;
+}
+
+label {
+    display: block;
+    margin-top: 14px;
+    color: #f1f1f1;
+    font-weight: 600;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+.enroll-section {
+    background: rgba(0,0,0,0.15);
+}
+
+.programs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.program-card {
+    background: rgba(255,255,255,0.18);
+    border-radius: 16px;
+    padding: 20px;
+    color: white;
+    transition: transform 0.3s;
+}
+
+.program-card:hover {
+    transform: translateY(-6px);
+}
+
+button {
+    margin-top: 30px;
+    width: 100%;
+    padding: 14px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #ff512f, #dd2476);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    padding: 18px;
+    font-size: 14px;
+    color: #f1f1f1;
+    background: rgba(0,0,0,0.25);
+}
+
+/* POPUP */
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-box {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    max-width: 400px;
+    text-align: center;
+    animation: popupFade 0.4s ease;
+}
+
+.popup-box h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.popup-box p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.popup-box button {
+    background: #43cea2;
+    border-radius: 30px;
+    font-size: 16px;
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popupFade {
+    from { opacity: 0; transform: scale(0.85); }
+    to { opacity: 1; transform: scale(1); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <header>
+        <h1>Career Enrollment Portal</h1>
+        <p>Enroll today. Build your career tomorrow.</p>
+    </header>
+
+    <section>
+        <h2>Applicant Details</h2>
+        <label>Full Name</label>
+        <input type="text">
+
+        <label>Email</label>
+        <input type="email">
+
+        <label>Phone</label>
+        <input type="tel">
+    </section>
+
+    <section class="enroll-section">
+        <h2>Select Programs</h2>
+
+        <div class="programs">
+            <div class="program-card">
+                <h3>Frontend Developer</h3>
+                <p>HTML, CSS, JavaScript</p>
+                <label><input type="checkbox"> Enroll</label>
+            </div>
+
+            <div class="program-card">
+                <h3>Backend Developer</h3>
+                <p>Node.js, APIs</p>
+                <label><input type="checkbox"> Enroll</label>
+            </div>
+
+            <div class="program-card">
+                <h3>Data Science</h3>
+                <p>Python, ML</p>
+                <label><input type="checkbox"> Enroll</label>
+            </div>
+        </div>
+
+        <button onclick="openPopup()">Submit Enrollment</button>
+    </section>
+
+    <footer>© 2026 Career Enrollment Portal</footer>
+</div>
+
+
+<div class="popup" id="popup">
+    <div class="popup-box">
+        <h3>Enrollment Successful 🎉</h3>
+        <p>
+            Thank you for enrolling!  
+            Our career preparation team will contact you within the next <strong>24 hours</strong>
+            to guide you through the next steps and career readiness process.
+        </p>
+        <button onclick="closePopup()">Okay, Got it</button>
+    </div>
+</div>
+
+<script>
+function openPopup() {
+    document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+</script>
+
+</body>
+</html>
