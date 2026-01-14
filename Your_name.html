@@ -1,190 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name | Resume</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Name | Resume</title>
 
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+<style>
+:root {
+    --bg: #020617;
+    --card: #0d1117;
+    --accent: #00e5ff;
+    --text: #e6edf3;
+    --muted: #9da5b4;
+}
 
-        body {
-            background: linear-gradient(120deg, #f0f4f8, #e6ebf1);
-            color: #333;
-        }
 
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
 
-        
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+body {
+    background: radial-gradient(circle at top, #0f172a, #020617);
+    color: var(--text);
+}
 
-        .header h1 {
-            font-size: 2.8rem;
-            font-weight: 600;
-        }
 
-        .title {
-            color: #0077ff;
-            font-weight: 500;
-            margin: 10px 0;
-        }
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    animation: fadeIn 1s ease;
+}
 
-        .contact a {
-            color: #555;
-            text-decoration: none;
-            font-size: 0.9rem;
-            margin: 0 5px;
-        }
 
-        .contact a:hover {
-            color: #0077ff;
-        }
+.header {
+    text-align: center;
+    margin-bottom: 50px;
+    animation: slideDown 1s ease;
+}
 
-       
-        .card {
-            background: #fff;
-            padding: 25px;
-            margin-bottom: 25px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+.header h1 {
+    font-size: 3rem;
+    font-weight: 600;
+}
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-        }
+.title {
+    color: var(--accent);
+    margin: 10px 0;
+}
 
-        .card h2 {
-            margin-bottom: 15px;
-            color: #0077ff;
-        }
+.contact a {
+    color: var(--muted);
+    text-decoration: none;
+    margin: 0 8px;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
 
-        .card h3 {
-            margin-bottom: 5px;
-        }
+.contact a:hover {
+    color: var(--accent);
+}
 
-        .date {
-            font-size: 0.85rem;
-            color: #777;
-        }
 
-        ul {
-            margin-top: 10px;
-            padding-left: 20px;
-        }
+.card {
+    background: linear-gradient(145deg, #0d1117, #020617);
+    padding: 28px;
+    margin-bottom: 30px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: cardFade 0.8s ease forwards;
+}
 
-        ul li {
-            margin-bottom: 8px;
-        }
+.card:nth-child(2){animation-delay:.2s}
+.card:nth-child(3){animation-delay:.4s}
+.card:nth-child(4){animation-delay:.6s}
+.card:nth-child(5){animation-delay:.8s}
 
-        
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 60px rgba(0,229,255,0.12);
+}
 
-        .skills span {
-            background: #0077ff;
-            color: #fff;
-            padding: 8px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            transition: background 0.3s;
-        }
+.card h2 {
+    color: var(--accent);
+    margin-bottom: 15px;
+    font-weight: 500;
+}
 
-        .skills span:hover {
-            background: #005fcc;
-        }
+.card h3 {
+    margin-bottom: 5px;
+    font-weight: 400;
+}
 
-      
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 0.85rem;
-            color: #666;
-        }
+.date {
+    font-size: 0.85rem;
+    color: var(--muted);
+}
 
-        
-        @media (max-width: 600px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+p, li {
+    font-size: 0.95rem;
+    color: #c9d1d9;
+}
+
+ul {
+    margin-top: 12px;
+    padding-left: 20px;
+}
+
+
+.accordion-item {
+    margin-bottom: 12px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.accordion-btn {
+    width: 100%;
+    padding: 14px 20px;
+    background: linear-gradient(145deg, #020617, #0d1117);
+    color: var(--accent);
+    border: none;
+    text-align: left;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, letter-spacing 0.3s;
+}
+
+.accordion-btn:hover {
+    background: rgba(0,229,255,0.08);
+    letter-spacing: 1px;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    background: #020617;
+    transition: max-height 0.4s ease;
+}
+
+.accordion-content ul {
+    padding: 18px 30px;
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 300px;
+}
+
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0 }
+    to { opacity: 1 }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-30px) }
+    to { opacity: 1; transform: translateY(0) }
+}
+
+@keyframes cardFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@media (max-width: 600px) {
+    .header h1 {
+        font-size: 2.2rem;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <header class="header">
-            <h1>Your Name</h1>
-            <p class="title">Frontend Developer</p>
-            <div class="contact">
-                <a href="mailto:you@email.com">you@email.com</a> |
-                <a href="#">LinkedIn</a> |
-                <a href="#">Portfolio</a>
+<header class="header">
+    <h1>Your Name</h1>
+    <p class="title">Frontend Developer</p>
+    <div class="contact">
+        <a href="mailto:you@email.com">you@email.com</a> |
+        <a href="#">LinkedIn</a> |
+        <a href="#">Portfolio</a>
+    </div>
+</header>
+
+<section class="card">
+    <h2>Summary</h2>
+    <p>
+        Frontend Developer focused on building clean, aesthetic,
+        responsive and high-performance web interfaces.
+    </p>
+</section>
+
+<section class="card">
+    <h2>Experience</h2>
+    <h3>Frontend Developer – Company Name</h3>
+    <span class="date">2023 – Present</span>
+    <ul>
+        <li>Built modern responsive UI</li>
+        <li>Improved accessibility & performance</li>
+        <li>Worked with designers & backend teams</li>
+    </ul>
+</section>
+
+<section class="card">
+    <h2>Education</h2>
+    <h3>Bachelor’s Degree – University Name</h3>
+    <span class="date">2023 – 2027</span>
+</section>
+
+<section class="card">
+    <h2>Skill Mastery</h2>
+
+    <div class="accordion">
+
+        <div class="accordion-item">
+            <button class="accordion-btn">HTML</button>
+            <div class="accordion-content">
+                <ul>
+                    <li>Semantic HTML</li>
+                    <li>Forms & Validation</li>
+                    <li>Accessibility (ARIA)</li>
+                    <li>SEO Basics</li>
+                    <li>Media & Structure</li>
+                </ul>
             </div>
-        </header>
+        </div>
 
-        <section class="card">
-            <h2>Summary</h2>
-            <p>
-                Passionate Frontend Developer skilled in building responsive,
-                interactive web applications using modern web technologies.
-            </p>
-        </section>
-
-        <section class="card">
-            <h2>Experience</h2>
-            <h3>Frontend Developer – Company Name</h3>
-            <span class="date">2023 – Present</span>
-            <ul>
-                <li>Built responsive UI using HTML, CSS, and JavaScript</li>
-                <li>Improved website performance and accessibility</li>
-                <li>Worked closely with designers and backend developers</li>
-            </ul>
-        </section>
-
-        <section class="card">
-            <h2>Education</h2>
-            <h3>Bachelor’s Degree – University Name</h3>
-            <span class="date">2019 – 2023</span>
-        </section>
-
-        <section class="card">
-            <h2>Skills</h2>
-            <div class="skills">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-                <span>React</span>
-                <span>Git</span>
+        <div class="accordion-item">
+            <button class="accordion-btn">CSS</button>
+            <div class="accordion-content">
+                <ul>
+                    <li>Flexbox & Grid</li>
+                    <li>Animations</li>
+                    <li>Responsive Design</li>
+                    <li>Dark UI Design</li>
+                    <li>CSS Variables</li>
+                </ul>
             </div>
-        </section>
+        </div>
 
-        <footer>
-            <p>© 2025 Your Name</p>
-        </footer>
+        <div class="accordion-item">
+            <button class="accordion-btn">JavaScript</button>
+            <div class="accordion-content">
+                <ul>
+                    <li>DOM Manipulation</li>
+                    <li>ES6+ Concepts</li>
+                    <li>Async / Await</li>
+                    <li>APIs & Fetch</li>
+                    <li>Error Handling</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-btn">React</button>
+            <div class="accordion-content">
+                <ul>
+                    <li>Components & Props</li>
+                    <li>Hooks & State</li>
+                    <li>Routing</li>
+                    <li>Context API</li>
+                    <li>Performance</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-btn">Git</button>
+            <div class="accordion-content">
+                <ul>
+                    <li>Git Basics</li>
+                    <li>Branching</li>
+                    <li>Pull Requests</li>
+                    <li>Conflict Resolution</li>
+                    <li>Best Practices</li>
+                </ul>
+            </div>
+        </div>
 
     </div>
+</section>
+
+<footer>
+    <p>© 2026  Your Name</p>
+</footer>
+
+</div>
+
+<script>
+const buttons = document.querySelectorAll(".accordion-btn");
+
+buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        const item = btn.parentElement;
+
+        document.querySelectorAll(".accordion-item").forEach(el => {
+            if (el !== item) {
+                el.classList.remove("active");
+            }
+        });
+
+        item.classList.toggle("active");
+    });
+});
+</script>
 
 </body>
 </html>
