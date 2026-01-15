@@ -1,149 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>chessboard</title>
-    <style>
-       table{
-        border-collapse: collapse ;
+<meta charset="UTF-8">
+<title>Royal Chessboard</title>
 
-       }
+<style>
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    background: linear-gradient(135deg,#1e1e2f,#2c2c54);
+    font-family: Georgia, serif;
+    color:#fff;
+}
 
-       td{
-        width: 50px;
-        height: 50px;
-       }
+h1{
+    margin-top:20px;
+    color:gold;
+    text-shadow:0 0 10px rgba(255,215,0,.6);
+}
 
-       .white{
-        background-color: ghostwhite;
-       }
+#greeting{
+    margin:10px 0 20px;
+    font-size:18px;
+    color:#f1c40f;
+}
 
-       .black{
-        background-color: black;
+.board{
+    border:8px solid #3b2f2f;
+    box-shadow:0 0 25px rgba(0,0,0,.8);
+}
 
-       }
-    </style>
+table{
+    border-collapse:collapse;
+}
+
+td{
+    width:60px;
+    height:60px;
+    text-align:center;
+    vertical-align:middle;
+    cursor:pointer;
+    transition:.2s;
+}
+
+td:hover{
+    transform:scale(1.08);
+}
+
+.white{ background:#f0d9b5; }
+.black{ background:#b58863; }
+
+img{
+    width:45px;
+    height:45px;
+    pointer-events:none;
+}
+
+#infoBox{
+    margin-top:20px;
+    padding:15px 25px;
+    background:rgba(0,0,0,.6);
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,.7);
+    min-width:320px;
+    text-align:center;
+}
+
+#infoBox span{
+    color:gold;
+    font-weight:bold;
+}
+</style>
 </head>
+
 <body>
 
-    <h2>chessboard</h2>
-    <table border="1">
-        <tr>
-            <td class="white"><object data="https://upload.wikimedia.org/wikipedia/commons/f/ff/Chess_rdt45.svg" type=""></object></td>
-                        <td class="black" ><object data="https://upload.wikimedia.org/wikipedia/commons/7/70/Chess_nlt45.svg" type=""></object></td>
-            <td class="white"><object data="" type="https://upload.wikimedia.org/wikipedia/commons/9/98/Chess_bdt45.svg"></object></td>
-            <td class="black">QUEEN</td>
-            <td class="white">KING</td>
-            <td class="black">BISHOP</td>
-            <td class="white">KNIGHT</td>
-            <td class="black">ROOK</td>
+<h1>♟ Royal Chessboard ♟</h1>
+<div id="greeting"></div>
+
+<div class="board">
+<table>
+
+<tr>
+<td class="white" onclick="showInfo('Rook','Moves straight lines')"><img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Chess_rdt45.svg"></td>
+<td class="black" onclick="showInfo('Knight','Moves in L shape')"><img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Chess_nlt45.svg"></td>
+<td class="white" onclick="showInfo('Bishop','Moves diagonally')"><img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Chess_bdt45.svg"></td>
+<td class="black" onclick="showInfo('Queen','Most powerful piece')"><img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Chess_qdt45.svg"></td>
+<td class="white" onclick="showInfo('King','Protect at all cost')"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Chess_kdt45.svg"></td>
+<td class="black" onclick="showInfo('Bishop','Moves diagonally')"><img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Chess_bdt45.svg"></td>
+<td class="white" onclick="showInfo('Knight','Jumps over pieces')"><img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Chess_nlt45.svg"></td>
+<td class="black" onclick="showInfo('Rook','Castle of army')"><img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Chess_rdt45.svg"></td>
+</tr>
 
 
-            </tr>
-        <tr>
-                        <td class="black"></td>
-            <td class="white"></td>
-            <td class="black"></td>
-            <td class="white"></td>
-            <td class="black"></td>
-            <td class="white"></td>
-            <td class="black"></td>
-                        <td class="white"></td>
+<tr>
+<script>
+for(let i=0;i<8;i++){
+ document.write(`<td class="${i%2?'white':'black'}" onclick="showInfo('Pawn','Moves forward, captures diagonally')">
+ <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Chess_pdt45.svg"></td>`);
+}
+</script>
+</tr>
 
 
+<script>
+for(let r=0;r<4;r++){
+ document.write("<tr>");
+ for(let c=0;c<8;c++){
+   document.write(`<td class="${(r+c)%2?'black':'white'}"></td>`);
+ }
+ document.write("</tr>");
+}
+</script>
 
 
-        </tr>
-         <tr>
-            <td class="white"></td>
-            <td class="black"></td>
-            <td class="white"></td>
-            <td class="black"></td>
-            <td class="white"></td>
-            <td class="black"></td>
-                        <td class="white"></td>
-                                                <td class="black"></td>
+<tr>
+<script>
+for(let i=0;i<8;i++){
+ document.write(`<td class="${i%2?'black':'white'}" onclick="showInfo('Pawn','Moves forward')">
+ <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Chess_plt45.svg"></td>`);
+}
+</script>
+</tr>
 
 
-
-
-
-        </tr>
-         <tr>
-                        <td class="black"></td>
-            <td class="white"></td>
-            <td class="black"></td>
-            <td class="white"></td>
-            <td class="black"></td>
-            <td class="white"></td>
-            <td class="black"></td>
-                        <td class="white"></td>
-
-
-
-
-        </tr>
-         <tr>
-            <td class="white"></td>
-            <td class="black"></td>
-            <td class="white"></td>
-            <td class="black"></td>
-            <td class="white"></td>
-            <td class="black"></td>
-                        <td class="white"></td>
-                                                <td class="black"></td>
-
-
-
-
-
-        </tr>
-         <tr>
-                        <td class="black"></td>
-            <td class="white"></td>
-            <td class="black"></td>
-            <td class="white"></td>
-            <td class="black"></td>
-            <td class="white"></td>
-            <td class="black"></td>
-                        <td class="white"></td>
-
-
-
-
-        </tr>
-         <tr>
-            <td class="white"></td>
-            <td class="black"></td>
-            <td class="white"></td>
-            <td class="black"></td>
-            <td class="white"></td>
-            <td class="black"></td>
-                        <td class="white"></td>
-                                                <td class="black"></td>
-
-
-
-
-
-        </tr>
-         <tr>
-                        <td class="black"><object data="https://upload.wikimedia.org/wikipedia/commons/7/72/Chess_rlt45.svg" type=""></object></td>
-            <td class="white" ><object data="https://upload.wikimedia.org/wikipedia/commons/e/ef/Chess_ndt45.svg" type=""></object></td>
-            <td class="black"></td>
-            <td class="white"></td>
-            <td class="black"></td>
-            <td class="white"></td>
-            <td class="black"></td>
-                        <td class="white"></td>
-
-
-
-
-        </tr>
+<tr>
+<td class="black" onclick="showInfo('Rook','Straight mover')"><img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Chess_rlt45.svg"></td>
+<td class="white" onclick="showInfo('Knight','L shape')"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Chess_ndt45.svg"></td>
+<td class="black" onclick="showInfo('Bishop','Diagonal')"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Chess_blt45.svg"></td>
+<td class="white" onclick="showInfo('Queen','Most powerful')"><img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Chess_qlt45.svg"></td>
+<td class="black" onclick="showInfo('King','Your Majesty')"><img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Chess_klt45.svg"></td>
+<td class="white" onclick="showInfo('Bishop','Diagonal')"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Chess_blt45.svg"></td>
+<td class="black" onclick="showInfo('Knight','Jumper')"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Chess_ndt45.svg"></td>
+<td class="white" onclick="showInfo('Rook','Castle')"><img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Chess_rlt45.svg"></td>
+</tr>
 
 </table>
-    
+</div>
+
+<div id="infoBox"> Click a piece, <span>My King</span></div>
+
+<script>
+const greetings=[
+ "Welcome, My King ",
+ "Greetings, Your Highness ",
+ "All hail the Grandmaster ",
+ "The board awaits you, Mighty Ruler "
+];
+document.getElementById("greeting").innerText=
+ greetings[Math.floor(Math.random()*greetings.length)];
+
+function showInfo(piece,desc){
+ document.getElementById("infoBox").innerHTML=
+ `♟ <span>${piece}</span><br>${desc}`;
+}
+</script>
+
 </body>
 </html>
