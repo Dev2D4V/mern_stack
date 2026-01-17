@@ -1,162 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Student Portfolio | BTech 3rd Year</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Devendra Gupta | Portfolio</title>
+
+<style>
+/* ====== Global Styles ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: #0f172a; /* deep cinematic blue */
+  color: #e5e7eb;
+  line-height: 1.7;
+}
+
+/* ====== Header / Hero ====== */
+header {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #020617, #0f172a, #020617);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+}
+
+header h1 {
+  font-size: 3.2rem;
+  letter-spacing: 2px;
+  color: #38bdf8;
+}
+
+header p {
+  margin: 12px 0 25px;
+  font-size: 1.1rem;
+  color: #cbd5f5;
+}
+
+nav a {
+  color: #e5e7eb;
+  margin: 0 12px;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: #38bdf8;
+  transition: 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ====== Main Sections ====== */
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 60px 20px;
+}
+
+section {
+  margin-bottom: 80px;
+  padding: 40px;
+  background: #020617;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #38bdf8;
+  border-left: 4px solid #38bdf8;
+  padding-left: 12px;
+}
+
+/* ====== Skills ====== */
+ul {
+  list-style: none;
+  margin-top: 10px;
+}
+
+ul li {
+  padding: 6px 0;
+  color: #dbeafe;
+}
+
+/* ====== Projects ====== */
+article {
+  margin-bottom: 30px;
+  padding: 25px;
+  border-radius: 12px;
+  background: #020617;
+  border: 1px solid #1e293b;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+article:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(56,189,248,0.25);
+}
+
+article h3 {
+  color: #7dd3fc;
+  margin-bottom: 10px;
+}
+
+article a {
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+/* ====== Table ====== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 12px;
+  text-align: center;
+}
+
+th {
+  background: #020617;
+  color: #38bdf8;
+}
+
+td {
+  background: #0f172a;
+}
+
+/* ====== Contact ====== */
+form {
+  margin-top: 25px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  margin-top: 6px;
+  background: #020617;
+  color: #e5e7eb;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px 22px;
+  border-radius: 25px;
+  border: none;
+  background: #38bdf8;
+  color: #020617;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #0ea5e9;
+}
+
+/* ====== Footer ====== */
+footer {
+  text-align: center;
+  padding: 30px;
+  background: #020617;
+  color: #94a3b8;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2.4rem;
+  }
+  section {
+    padding: 30px 20px;
+  }
+}
+</style>
 </head>
+
 <body>
 
-  <header>
-    <h1>Devendra Gupta</h1>
-    <p>BTech CSE • 3rd Year • [GLA University]</p>
-    <nav>
-      <a href="#about">About</a> |
-      <a href="#skills">Skills</a> |
-      <a href="#projects">Projects</a> |
-      <a href="#education">Education</a> |
-      <a href="#achievements">Achievements</a> |
-      <a href="#contact">Contact</a>
-    </nav>
-    <hr />
-  </header>
+<header>
+  <h1>Devendra Gupta</h1>
+  <p>BTech CSE • 3rd Year • GLA University</p>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-  <main>
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        I am a 3rd-year BTech student in Computer Science and Engineering with a
-        strong interest in full‑stack web development, data structures and algorithms,
-        and cloud fundamentals. I enjoy solving real‑world problems through clean and
-        simple code.
-      </p>
-    </section>
+<main>
 
-    <section id="skills">
-      <h2>Skills</h2>
-      <h3>Programming</h3>
-      <ul>
-        <li>Java, C, Python</li>
-        <li>HTML, CSS (basic), JavaScript (basic)</li>
-        <li>SQL (basic), Git & GitHub</li>
-      </ul>
-      <h3>Core CS</h3>
-      <ul>
-        <li>Data Structures & Algorithms</li>
-        <li>DBMS, OS, Computer Networks (academic level)</li>
-      </ul>
-      <h3>Tools</h3>
-      <ul>
-        <li>VS Code, IntelliJ/NetBeans/Eclipse</li>
-        <li>Postman (basic), Linux CLI (basic)</li>
-      </ul>
-    </section>
+<section id="about">
+  <h2>About Me</h2>
+  <p>
+    I am a 3rd-year BTech student in Computer Science and Engineering with a strong
+    interest in full-stack web development, data structures & algorithms, and cloud
+    fundamentals. I enjoy solving real-world problems with clean, scalable code.
+  </p>
+</section>
 
-    <section id="projects">
-      <h2>Projects</h2>
+<section id="skills">
+  <h2>Skills</h2>
+  <ul>
+    <li><strong>Programming:</strong> Java, C, Python</li>
+    <li><strong>Web:</strong> HTML, CSS, JavaScript (basic)</li>
+    <li><strong>Core CS:</strong> DSA, DBMS, OS, Computer Networks</li>
+    <li><strong>Tools:</strong> Git, GitHub, VS Code, IntelliJ</li>
+  </ul>
+</section>
 
-      <article>
-        <h3>1) Student Portfolio (This Page)</h3>
-        <p>
-          A simple, responsive HTML‑only portfolio showcasing my profile, skills,
-          projects, and education.
-        </p>
-        <p><strong>Tech:</strong> HTML5</p>
-        <p><strong>Repo:</strong> <a href="#">github.com/yourname/portfolio</a></p>
-      </article>
+<section id="projects">
+  <h2>Projects</h2>
 
-      <article>
-        <h3>2) Task Manager CLI</h3>
-        <p>
-          Command‑line tool to add, list, update, and delete tasks saved in a text/CSV file.
-        </p>
-        <p><strong>Tech:</strong> C++ or Python</p>
-        <p><strong>Repo:</strong> <a href="#">github.com/yourname/task-manager-cli</a></p>
-      </article>
+  <article>
+    <h3>Student Portfolio</h3>
+    <p>Responsive cinematic portfolio showcasing skills and projects.</p>
+    <p><strong>Tech:</strong> HTML, CSS</p>
+  </article>
 
-      <article>
-        <h3>3) Library App (Mini)</h3>
-        <p>
-          Basic web app (frontend only) listing books and authors, with simple search
-          using HTML forms (no backend).
-        </p>
-        <p><strong>Tech:</strong> HTML, basic JS (optional)</p>
-        <p><strong>Repo:</strong> <a href="#">github.com/yourname/library-app</a></p>
-      </article>
-    </section>
+  <article>
+    <h3>Task Manager CLI</h3>
+    <p>Command-line task manager with file-based storage.</p>
+    <p><strong>Tech:</strong> Python / C++</p>
+  </article>
 
-    <section id="education">
-      <h2>Education</h2>
-      <table border="1" cellpadding="6" cellspacing="0">
-        <thead>
-          <tr>
-            <th>Program</th>
-            <th>Institute</th>
-            <th>Year</th>
-            <th>CGPA / %</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>BTech (CSE)</td>
-            <td>[Your College Name]</td>
-            <td>2022 – 2026</td>
-            <td>[e.g., 8.2/10]</td>
-          </tr>
-          <tr>
-            <td>Class XII</td>
-            <td>[School Name]</td>
-            <td>2022</td>
-            <td>[e.g., 88%]</td>
-          </tr>
-          <tr>
-            <td>Class X</td>
-            <td>[School Name]</td>
-            <td>2020</td>
-            <td>[e.g., 90%]</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+  <article>
+    <h3>Library App</h3>
+    <p>Frontend-only mini web app with search functionality.</p>
+    <p><strong>Tech:</strong> HTML, JavaScript</p>
+  </article>
+</section>
 
-    <section id="achievements">
-      <h2>Achievements & Activities</h2>
-      <ul>
-        <li>Secured top 10% in college coding contest (2025)</li>
-        <li>Completed AWS Cloud Practitioner learning path</li>
-        <li>Member, Coding Club & Open‑Source Society</li>
-      </ul>
-    </section>
+<section id="education">
+  <h2>Education</h2>
+  <table>
+    <tr>
+      <th>Program</th>
+      <th>Institute</th>
+      <th>Year</th>
+      <th>CGPA / %</th>
+    </tr>
+    <tr>
+      <td>BTech (CSE)</td>
+      <td>GLA University</td>
+      <td>2022 – 2026</td>
+      <td>8.2 / 10</td>
+    </tr>
+  </table>
+</section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>
-        <strong>Email:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a><br />
-        <strong>Phone:</strong> +91‑XXXXXXXXXX<br />
-        <strong>GitHub:</strong> <a href="https://github.com/yourname">github.com/yourname</a><br />
-        <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/yourname/">linkedin.com/in/yourname</a>
-      </p>
+<section id="achievements">
+  <h2>Achievements</h2>
+  <ul>
+    <li>Top 10% in College Coding Contest</li>
+    <li>AWS Cloud Practitioner Learning Path</li>
+    <li>Active Member – Coding Club</li>
+  </ul>
+</section>
 
-      <!-- Optional simple contact form (works with mailto; may open email client) -->
-      <form action="mailto:your.email@example.com" method="post" enctype="text/plain">
-        <label for="name">Name:</label><br />
-        <input id="name" name="name" type="text" required /><br /><br />
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: your.email@example.com</p>
+  <p>GitHub: github.com/yourname</p>
+  <p>LinkedIn: linkedin.com/in/yourname</p>
 
-        <label for="email">Email:</label><br />
-        <input id="email" name="email" type="email" required /><br /><br />
+  <form>
+    <input type="text" placeholder="Your Name" required />
+    <input type="email" placeholder="Your Email" required />
+    <textarea rows="5" placeholder="Your Message"></textarea>
+    <button type="submit">Send</button>
+  </form>
+</section>
 
-        <label for="message">Message:</label><br />
-        <textarea id="message" name="message" rows="5" cols="30" required></textarea><br /><br />
+</main>
 
-        <button type="submit">Send</button>
-        <button type="reset">Reset</button>
-      </form>
-    </section>
-  </main>
+<footer>
+  © 2025 Devendra Gupta • Cinematic Portfolio
+</footer>
 
-  <footer>
-    <hr />
-    <p>© <span id="year">2025</span> Your Name. All rights reserved.</p>
-  </footer>
 </body>
 </html>
