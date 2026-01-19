@@ -29,13 +29,13 @@ body {
 }
 
 .logo {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: bold;
   color: #e50914;
-  margin-right: 30px;
 }
 
 .search {
+  margin-left: 30px;
   width: 50%;
   padding: 10px;
   background: #222;
@@ -64,7 +64,7 @@ body {
 }
 
 .sidebar div:hover {
-  color: white;
+  color: #fff;
 }
 
 /* VIDEOS GRID */
@@ -132,6 +132,16 @@ body {
 .close:hover {
   background: #f6121d;
 }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+  .player video {
+    width: 90%;
+  }
+}
 </style>
 </head>
 
@@ -172,17 +182,17 @@ body {
 const videoData = [
   {
     title: "Big Buck Bunny",
-    thumb: "https://peach.blender.org/wp-content/uploads/title_anouncement.jpg",
+    thumb: "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4",
     src: "https://www.w3schools.com/html/mov_bbb.mp4"
   },
   {
     title: "Sample Movie",
-    thumb: "https://dummyimage.com/600x400/111/fff&text=Netflix+Style",
+    thumb: "https://images.unsplash.com/photo-1502134249126-9f3755a50d78",
     src: "https://www.w3schools.com/html/movie.mp4"
   },
   {
-    title: "Dark Theme Demo",
-    thumb: "https://dummyimage.com/600x400/222/fff&text=VideoFlix",
+    title: "Action Trailer",
+    thumb: "https://images.unsplash.com/photo-1517602302552-471fe67acf66",
     src: "https://www.w3schools.com/html/mov_bbb.mp4"
   }
 ];
@@ -196,7 +206,7 @@ videoData.forEach(v => {
   const card = document.createElement("div");
   card.className = "video";
   card.innerHTML = `
-    <img src="${v.thumb}">
+    <img src="${v.thumb}" alt="${v.title}">
     <h4>${v.title}</h4>
   `;
   card.onclick = () => playVideo(v.src);
