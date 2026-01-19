@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>YouTube Clone</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f9f9f9;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: red;
+  margin-right: 20px;
+}
+
+.search {
+  width: 50%;
+  padding: 8px;
+}
+
+/* LAYOUT */
+.container {
+  display: flex;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 200px;
+  background: white;
+  padding: 15px;
+  height: 100vh;
+}
+
+.sidebar div {
+  margin: 15px 0;
+  cursor: pointer;
+}
+
+/* VIDEOS */
+.videos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+  padding: 20px;
+  flex: 1;
+}
+
+.video {
+  background: white;
+  cursor: pointer;
+}
+
+.video img {
+  width: 100%;
+}
+
+.video h4 {
+  padding: 8px;
+}
+
+/* PLAYER */
+.player {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.player video {
+  width: 70%;
+}
+
+.close {
+  margin-top: 15px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo">▶ YouTube</div>
+  <input class="search" placeholder="Search">
+</div>
+
+<!-- MAIN -->
+<div class="container">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div>🏠 Home</div>
+    <div>🔥 Trending</div>
+    <div>📺 Subscriptions</div>
+    <div>📚 Library</div>
+  </div>
+
+  <!-- VIDEOS -->
+  <div class="videos" id="videos"></div>
+
+</div>
+
+<!-- PLAYER -->
+<div class="player" id="player">
+  <video controls id="video">
+    <source id="source">
+  </video>
+  <button class="close" onclick="closeVideo()">Close</button>
+</div>
+
+<script>
+const videoData = [
+  {
+    title: "Big Buck Bunny",
+    thumb: "https://peach.blender.org/wp-content/uploads/title_anouncement.jpg",
+    src: "https://www.w3schools.com/html/mov_bbb.mp4"
+  },
+  {
+    title: "Sample Movie",
+    thumb: "https://dummyimage.com/600x400/000/fff&text=Video",
+    src: "https://www.w3schools.com/html/movie.mp4"
+  }
+];
+
+const videos = document.getElementById("videos");
+const player = document.getElementById("player");
+const video = document.getElementById("video");
+const source = document.getElementById("source");
+
+videoData.forEach(v => {
+  const div = document.createElement("div");
+  div.className = "video";
+  div.innerHTML = `
+    <img src="${v.thumb}">
+    <h4>${v.title}</h4>
+  `;
+  div.onclick = () => playVideo(v.src);
+  videos.appendChild(div);
+});
+
+function playVideo(src) {
+  source.src = src;
+  video.load();
+  player.style.display = "flex";
+  video.play();
+}
+
+function closeVideo() {
+  video.pause();
+  player.style.display = "none";
+}
+</script>
+
+</body>
+</html>
