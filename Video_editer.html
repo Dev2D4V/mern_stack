@@ -2,39 +2,46 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>YouTube Clone</title>
+<title>VideoFlix</title>
 
 <style>
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
-  background: #f9f9f9;
+  background: #141414;
+  color: #fff;
 }
 
 /* HEADER */
 .header {
   display: flex;
   align-items: center;
-  padding: 10px 20px;
-  background: white;
-  border-bottom: 1px solid #ddd;
+  padding: 15px 30px;
+  background: #111;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .logo {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: bold;
-  color: red;
-  margin-right: 20px;
+  color: #e50914;
+  margin-right: 30px;
 }
 
 .search {
   width: 50%;
-  padding: 8px;
+  padding: 10px;
+  background: #222;
+  border: none;
+  color: white;
+  outline: none;
 }
 
 /* LAYOUT */
@@ -44,61 +51,86 @@ body {
 
 /* SIDEBAR */
 .sidebar {
-  width: 200px;
-  background: white;
-  padding: 15px;
+  width: 220px;
+  background: #111;
+  padding: 20px;
   height: 100vh;
 }
 
 .sidebar div {
-  margin: 15px 0;
+  margin: 20px 0;
   cursor: pointer;
+  color: #aaa;
 }
 
-/* VIDEOS */
+.sidebar div:hover {
+  color: white;
+}
+
+/* VIDEOS GRID */
 .videos {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 15px;
-  padding: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  padding: 30px;
   flex: 1;
 }
 
+/* VIDEO CARD */
 .video {
-  background: white;
+  background: #181818;
+  border-radius: 6px;
+  overflow: hidden;
   cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.video:hover {
+  transform: scale(1.08);
+  z-index: 2;
 }
 
 .video img {
   width: 100%;
+  display: block;
 }
 
 .video h4 {
-  padding: 8px;
+  padding: 10px;
+  font-size: 14px;
 }
 
-/* PLAYER */
+/* PLAYER OVERLAY */
 .player {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.8);
+  inset: 0;
+  background: rgba(0,0,0,0.9);
   display: none;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  z-index: 100;
 }
 
 .player video {
   width: 70%;
+  max-width: 900px;
+  border-radius: 8px;
 }
 
 .close {
   margin-top: 15px;
-  padding: 10px 20px;
+  padding: 10px 25px;
+  background: #e50914;
+  border: none;
+  color: white;
+  font-size: 16px;
   cursor: pointer;
+  border-radius: 4px;
+}
+
+.close:hover {
+  background: #f6121d;
 }
 </style>
 </head>
@@ -107,8 +139,8 @@ body {
 
 <!-- HEADER -->
 <div class="header">
-  <div class="logo">▶ YouTube</div>
-  <input class="search" placeholder="Search">
+  <div class="logo">VideoFlix</div>
+  <input class="search" placeholder="Search movies, shows...">
 </div>
 
 <!-- MAIN -->
@@ -118,8 +150,9 @@ body {
   <div class="sidebar">
     <div>🏠 Home</div>
     <div>🔥 Trending</div>
-    <div>📺 Subscriptions</div>
-    <div>📚 Library</div>
+    <div>🎬 Movies</div>
+    <div>📺 Series</div>
+    <div>⭐ My List</div>
   </div>
 
   <!-- VIDEOS -->
@@ -144,8 +177,13 @@ const videoData = [
   },
   {
     title: "Sample Movie",
-    thumb: "https://dummyimage.com/600x400/000/fff&text=Video",
+    thumb: "https://dummyimage.com/600x400/111/fff&text=Netflix+Style",
     src: "https://www.w3schools.com/html/movie.mp4"
+  },
+  {
+    title: "Dark Theme Demo",
+    thumb: "https://dummyimage.com/600x400/222/fff&text=VideoFlix",
+    src: "https://www.w3schools.com/html/mov_bbb.mp4"
   }
 ];
 
@@ -155,14 +193,14 @@ const video = document.getElementById("video");
 const source = document.getElementById("source");
 
 videoData.forEach(v => {
-  const div = document.createElement("div");
-  div.className = "video";
-  div.innerHTML = `
+  const card = document.createElement("div");
+  card.className = "video";
+  card.innerHTML = `
     <img src="${v.thumb}">
     <h4>${v.title}</h4>
   `;
-  div.onclick = () => playVideo(v.src);
-  videos.appendChild(div);
+  card.onclick = () => playVideo(v.src);
+  videos.appendChild(card);
 });
 
 function playVideo(src) {
