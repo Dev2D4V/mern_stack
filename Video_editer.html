@@ -13,98 +13,119 @@
 }
 
 body {
-  background: #141414;
+  background: #0f0f0f;
   color: #fff;
 }
 
-/* HEADER */
+
 .header {
   display: flex;
   align-items: center;
-  padding: 15px 30px;
-  background: #111;
+  padding: 10px 20px;
+  background: #0f0f0f;
+  border-bottom: 1px solid #222;
   position: sticky;
   top: 0;
   z-index: 10;
 }
 
 .logo {
-  font-size: 26px;
+  font-size: 22px;
   font-weight: bold;
-  color: #e50914;
+  color: #ff0000;
 }
 
 .search {
-  margin-left: 30px;
-  width: 50%;
+  margin: 0 20px;
+  flex: 1;
   padding: 10px;
-  background: #222;
-  border: none;
+  background: #121212;
+  border: 1px solid #303030;
   color: white;
   outline: none;
+  border-radius: 20px;
 }
 
-/* LAYOUT */
+.icons {
+  display: flex;
+  gap: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
 .container {
   display: flex;
 }
 
-/* SIDEBAR */
+
 .sidebar {
-  width: 220px;
-  background: #111;
-  padding: 20px;
-  height: 100vh;
+  width: 240px;
+  background: #0f0f0f;
+  padding: 15px;
+  height: calc(100vh - 56px);
+  overflow-y: auto;
 }
 
 .sidebar div {
-  margin: 20px 0;
+  padding: 12px;
+  border-radius: 8px;
   cursor: pointer;
-  color: #aaa;
+  color: #ccc;
 }
 
 .sidebar div:hover {
+  background: #272727;
   color: #fff;
 }
 
-/* VIDEOS GRID */
+
 .videos {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 20px;
-  padding: 30px;
+  padding: 25px;
   flex: 1;
 }
 
-/* VIDEO CARD */
-.video {
-  background: #181818;
-  border-radius: 6px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
 
-.video:hover {
-  transform: scale(1.08);
-  z-index: 2;
+.video {
+  cursor: pointer;
 }
 
 .video img {
   width: 100%;
-  display: block;
+  border-radius: 12px;
 }
 
-.video h4 {
-  padding: 10px;
+.video-info {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  background: #444;
+  border-radius: 50%;
+}
+
+.video-text h4 {
   font-size: 14px;
+  margin-bottom: 4px;
 }
 
-/* PLAYER OVERLAY */
+.video-text p {
+  font-size: 12px;
+  color: #aaa;
+}
+
+
 .player {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0.95);
   display: none;
   justify-content: center;
   align-items: center;
@@ -118,28 +139,34 @@ body {
   border-radius: 8px;
 }
 
-.close {
+.subscribe {
   margin-top: 15px;
-  padding: 10px 25px;
-  background: #e50914;
+  padding: 10px 20px;
+  background: #ff0000;
   border: none;
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 20px;
 }
 
-.close:hover {
-  background: #f6121d;
+.close {
+  margin-top: 10px;
+  padding: 8px 20px;
+  background: #333;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 20px;
 }
 
-/* RESPONSIVE */
+
 @media (max-width: 768px) {
   .sidebar {
     display: none;
   }
   .player video {
-    width: 90%;
+    width: 95%;
   }
 }
 </style>
@@ -147,34 +174,40 @@ body {
 
 <body>
 
-<!-- HEADER -->
+
 <div class="header">
-  <div class="logo">VideoFlix</div>
-  <input class="search" placeholder="Search movies, shows...">
+  <div class="logo">▶ VideoFlix</div>
+  <input class="search" placeholder="Search">
+  <div class="icons">
+    ➕ 🔔 👤
+  </div>
 </div>
 
-<!-- MAIN -->
+
 <div class="container">
 
-  <!-- SIDEBAR -->
+ \
   <div class="sidebar">
     <div>🏠 Home</div>
-    <div>🔥 Trending</div>
-    <div>🎬 Movies</div>
-    <div>📺 Series</div>
-    <div>⭐ My List</div>
+    <div>🎞 Shorts</div>
+    <div>📺 Subscriptions</div>
+    <hr style="border:0.5px solid #222; margin:10px 0;">
+    <div onclick="showHistory()">🕒 History</div>
+    <div>⏰ Watch Later</div>
+    <div>👍 Liked Videos</div>
   </div>
 
-  <!-- VIDEOS -->
+ 
   <div class="videos" id="videos"></div>
 
 </div>
 
-<!-- PLAYER -->
+
 <div class="player" id="player">
   <video controls id="video">
     <source id="source">
   </video>
+  <button class="subscribe">Subscribe</button>
   <button class="close" onclick="closeVideo()">Close</button>
 </div>
 
@@ -182,16 +215,22 @@ body {
 const videoData = [
   {
     title: "Big Buck Bunny",
+    channel: "Blender Studio",
+    views: "12M views • 1 year ago",
     thumb: "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4",
     src: "https://www.w3schools.com/html/mov_bbb.mp4"
   },
   {
     title: "Sample Movie",
+    channel: "Movie Hub",
+    views: "3.4M views • 8 months ago",
     thumb: "https://images.unsplash.com/photo-1502134249126-9f3755a50d78",
     src: "https://www.w3schools.com/html/movie.mp4"
   },
   {
     title: "Action Trailer",
+    channel: "Action Zone",
+    views: "980K views • 2 weeks ago",
     thumb: "https://images.unsplash.com/photo-1517602302552-471fe67acf66",
     src: "https://www.w3schools.com/html/mov_bbb.mp4"
   }
@@ -202,27 +241,44 @@ const player = document.getElementById("player");
 const video = document.getElementById("video");
 const source = document.getElementById("source");
 
+let history = JSON.parse(localStorage.getItem("history")) || [];
+
 videoData.forEach(v => {
   const card = document.createElement("div");
   card.className = "video";
   card.innerHTML = `
-    <img src="${v.thumb}" alt="${v.title}">
-    <h4>${v.title}</h4>
+    <img src="${v.thumb}">
+    <div class="video-info">
+      <div class="avatar"></div>
+      <div class="video-text">
+        <h4>${v.title}</h4>
+        <p>${v.channel}</p>
+        <p>${v.views}</p>
+      </div>
+    </div>
   `;
-  card.onclick = () => playVideo(v.src);
+  card.onclick = () => playVideo(v);
   videos.appendChild(card);
 });
 
-function playVideo(src) {
-  source.src = src;
+function playVideo(v) {
+  source.src = v.src;
   video.load();
   player.style.display = "flex";
   video.play();
+
+  history.unshift(v.title);
+  history = [...new Set(history)];
+  localStorage.setItem("history", JSON.stringify(history));
 }
 
 function closeVideo() {
   video.pause();
   player.style.display = "none";
+}
+
+function showHistory() {
+  alert("Watch History:\n\n" + history.join("\n"));
 }
 </script>
 
