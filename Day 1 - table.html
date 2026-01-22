@@ -1,53 +1,190 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Your Name - Resume</title>
-        <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
-    </head>  
-      <body>
-        <div class="container">
-            <header>
-                <h1>Your Name</h1>
-                <p>Your Job Title / Profession</p>
-                <p>Contact Information (Email, Phone, LinkedIn, Portfolio)</p>
-            </header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendation Dashboard</title>
 
-            <section class="summary">
-                <h2>Summary</h2>
-                <p>A concise overview of your skills and career goals.</p>
-            </section>
+  
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
 
-            <section class="experience">
-                <h2>Experience</h2>
-                <h3>Job Title - Company Name</h3>
-                <p>Dates of Employment</p>
-                <ul>
-                    <li>Key responsibility/achievement 1</li>
-                    <li>Key responsibility/achievement 2</li>
-                </ul>
-                <!-- Repeat for other experiences -->
-            </section>
+        .container {
+            max-width: 850px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.1);
+        }
 
-            <section class="education">
-                <h2>Education</h2>
-                <h3>Degree/Certification - Institution Name</h3>
-                <p>Dates of Attendance/Graduation</p>
-                <!-- Repeat for other education -->
-            </section>
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
 
-            <section class="skills">
-                <h2>Skills</h2>
-                <ul>
-                    <li>Technical Skills: HTML, CSS, JavaScript, etc.</li>
-                    <li>Soft Skills: Communication, Teamwork, etc.</li>
-                </ul>
-            </section>
+        header h1 {
+            margin-bottom: 5px;
+        }
 
-            <footer>
-                <p>&copy; 2025 Your Name</p>
-            </footer>
-        </div>
-    </body>
-    </html>
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        select, button {
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        select {
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .results h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: #eef2f5;
+            margin: 8px 0;
+            padding: 12px;
+            border-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <header>
+        <h1>📚 Book Recommendation Dashboard</h1>
+        <p>Get Top 5 books based on your interest</p>
+    </header>
+
+  
+    <section class="dashboard">
+        <select id="category">
+            <option value="">-- Select Interest --</option>
+            <option value="thriller">Thriller</option>
+            <option value="knowledge">Knowledge</option>
+            <option value="business">Business</option>
+            <option value="horror">Horror</option>
+            <option value="romance">Romance</option>
+            <option value="fiction">Fiction</option>
+        </select>
+
+        <button onclick="showBooks()">Get Suggestions</button>
+    </section>
+
+   
+    <section class="results">
+        <h2>Top 5 Recommended Books</h2>
+        <ul id="bookList"></ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Book Dashboard</p>
+    </footer>
+</div>
+
+
+<script>
+    const books = {
+        thriller: [
+            "The Silent Patient",
+            "Gone Girl",
+            "Shutter Island",
+            "The Da Vinci Code",
+            "The Girl with the Dragon Tattoo"
+        ],
+        knowledge: [
+            "Sapiens",
+            "Atomic Habits",
+            "Thinking, Fast and Slow",
+            "A Brief History of Time",
+            "The Power of Habit"
+        ],
+        business: [
+            "Rich Dad Poor Dad",
+            "The Lean Startup",
+            "Zero to One",
+            "Think and Grow Rich",
+            "The 4-Hour Workweek"
+        ],
+        horror: [
+            "It",
+            "The Shining",
+            "Dracula",
+            "The Exorcist",
+            "Bird Box"
+        ],
+        romance: [
+            "Pride and Prejudice",
+            "Me Before You",
+            "The Notebook",
+            "It Ends With Us",
+            "Outlander"
+        ],
+        fiction: [
+            "Harry Potter",
+            "The Alchemist",
+            "The Lord of the Rings",
+            "The Great Gatsby",
+            "Life of Pi"
+        ]
+    };
+
+    function showBooks() {
+        const category = document.getElementById("category").value;
+        const bookList = document.getElementById("bookList");
+
+        bookList.innerHTML = "";
+
+        if (!category) {
+            bookList.innerHTML = "<li>Please select an interest first.</li>";
+            return;
+        }
+
+        books[category].forEach(book => {
+            const li = document.createElement("li");
+            li.textContent = book;
+            bookList.appendChild(li);
+        });
+    }
+</script>
+
+</body>
+</html>
