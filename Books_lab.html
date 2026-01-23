@@ -1,89 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Recommendation Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Recommendation Dashboard</title>
 
-  
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+   
+    :root {
+        --bg-color: #f4f6f8;
+        --card-bg: #ffffff;
+        --primary: #007bff;
+        --primary-hover: #0056b3;
+        --text-color: #333;
+        --item-bg: #eef2f5;
+    }
 
-        .container {
-            max-width: 850px;
-            margin: 40px auto;
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 0 12px rgba(0,0,0,0.1);
-        }
+    body {
+        font-family: Arial, sans-serif;
+        background: var(--bg-color);
+        margin: 0;
+        padding: 0;
+        transition: all 0.3s ease;
+    }
 
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+    .container {
+        max-width: 850px;
+        margin: 40px auto;
+        background: var(--card-bg);
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 0 12px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
 
-        header h1 {
-            margin-bottom: 5px;
-        }
+    header {
+        text-align: center;
+        margin-bottom: 30px;
+        color: var(--text-color);
+    }
 
-        .dashboard {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
+    .dashboard, .themes {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
 
-        select, button {
-            padding: 12px;
-            font-size: 16px;
-            border-radius: 5px;
-        }
+    select, button {
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 5px;
+    }
 
-        select {
-            border: 1px solid #ccc;
-        }
+    select {
+        border: 1px solid #ccc;
+    }
 
-        button {
-            background: #007bff;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
+    button {
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
 
-        button:hover {
-            background: #0056b3;
-        }
+    button:hover {
+        background: var(--primary-hover);
+        transform: scale(1.05);
+    }
 
-        .results h2 {
-            text-align: center;
-            margin-bottom: 15px;
-        }
+    .theme-btn {
+        padding: 8px 14px;
+        border-radius: 20px;
+        font-size: 14px;
+    }
 
-        ul {
-            list-style: none;
-            padding: 0;
-        }
+    .results h2 {
+        text-align: center;
+        margin-bottom: 15px;
+        color: var(--text-color);
+    }
 
-        li {
-            background: #eef2f5;
-            margin: 8px 0;
-            padding: 12px;
-            border-radius: 5px;
-        }
+    ul {
+        list-style: none;
+        padding: 0;
+    }
 
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            color: #666;
-        }
-    </style>
+    li {
+        background: var(--item-bg);
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 5px;
+        transition: background 0.3s ease;
+    }
+
+    footer {
+        text-align: center;
+        margin-top: 30px;
+        color: #666;
+    }
+</style>
 </head>
 
 <body>
@@ -94,7 +112,7 @@
         <p>Get Top 5 books based on your interest</p>
     </header>
 
-  
+    
     <section class="dashboard">
         <select id="category">
             <option value="">-- Select Interest --</option>
@@ -110,6 +128,14 @@
     </section>
 
    
+    <section class="themes">
+        <button class="theme-btn" onclick="setTheme('blue')">Blue</button>
+        <button class="theme-btn" onclick="setTheme('green')">Green</button>
+        <button class="theme-btn" onclick="setTheme('purple')">Purple</button>
+        <button class="theme-btn" onclick="setTheme('dark')">Dark</button>
+    </section>
+
+    
     <section class="results">
         <h2>Top 5 Recommended Books</h2>
         <ul id="bookList"></ul>
@@ -119,7 +145,6 @@
         <p>&copy; 2025 Book Dashboard</p>
     </footer>
 </div>
-
 
 <script>
     const books = {
@@ -183,6 +208,54 @@
             li.textContent = book;
             bookList.appendChild(li);
         });
+    }
+
+    function setTheme(theme) {
+        const root = document.documentElement;
+
+        const themes = {
+            blue: {
+                primary: "#007bff",
+                hover: "#0056b3",
+                bg: "#f4f6f8",
+                card: "#ffffff",
+                text: "#333",
+                item: "#eef2f5"
+            },
+            green: {
+                primary: "#28a745",
+                hover: "#1e7e34",
+                bg: "#f1f8f4",
+                card: "#ffffff",
+                text: "#333",
+                item: "#eef2f5"
+            },
+            purple: {
+                primary: "#6f42c1",
+                hover: "#59339d",
+                bg: "#f6f3fb",
+                card: "#ffffff",
+                text: "#333",
+                item: "#eef2f5"
+            },
+            dark: {
+                primary: "#343a40",
+                hover: "#1d2124",
+                bg: "#121212",
+                card: "#1e1e1e",
+                text: "#f1f1f1",
+                item: "#2a2a2a"
+            }
+        };
+
+        const t = themes[theme];
+
+        root.style.setProperty("--primary", t.primary);
+        root.style.setProperty("--primary-hover", t.hover);
+        root.style.setProperty("--bg-color", t.bg);
+        root.style.setProperty("--card-bg", t.card);
+        root.style.setProperty("--text-color", t.text);
+        root.style.setProperty("--item-bg", t.item);
     }
 </script>
 
