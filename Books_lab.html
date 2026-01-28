@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Best Book Recommendation Dashboard</title>
+<title>Book Recommendation Dashboard</title>
 
 <style>
     :root {
         --bg-color: #1a102f;
         --card-bg: linear-gradient(145deg, rgba(40, 20, 70, 0.95), rgba(20, 10, 40, 0.95));
         --primary: #d4af37; 
-        --primary-hover: #b8962e;
         --text-color: #f8f5ff;
         --muted-text: #cbbde2;
         --item-bg: rgba(70, 45, 120, 0.6);
@@ -51,7 +50,6 @@
     header h1 {
         margin: 0;
         font-size: 2.3rem;
-        letter-spacing: 1px;
         color: var(--primary);
     }
 
@@ -76,12 +74,11 @@
         border: 1px solid var(--border);
         background: rgba(15, 5, 35, 0.9);
         color: var(--text-color);
-        outline: none;
         font-family: inherit;
     }
 
     select {
-        min-width: 240px;
+        min-width: 220px;
     }
 
     button {
@@ -89,20 +86,17 @@
         color: #2b1b05;
         font-weight: 700;
         cursor: pointer;
-        transition: all 0.35s ease;
-        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
     }
 
     button:hover {
-        background: linear-gradient(135deg, #ffe28a, #b8962e);
-        transform: translateY(-3px) scale(1.03);
+        transform: translateY(-3px);
         box-shadow: 0 10px 30px rgba(212,175,55,0.6);
     }
 
     .results h2 {
         text-align: center;
         margin-bottom: 16px;
-        font-weight: 600;
         color: #f3e7c3;
     }
 
@@ -118,7 +112,7 @@
         padding: 16px 18px;
         border-radius: 12px;
         border: 1px solid var(--border);
-        transition: transform 0.25s ease, background 0.35s ease;
+        transition: 0.3s;
         font-size: 1.05rem;
     }
 
@@ -135,29 +129,25 @@
         font-style: italic;
     }
 </style>
-
 </head>
 
 <body>
 
 <div class="container">
     <header>
-        <div class="logo">
-           
-            <svg width="70" height="70" viewBox="0 0 64 64" fill="none">
-                <circle cx="32" cy="28" r="18" fill="#38bdf8" opacity="0.15"/>
-                <path d="M32 10C24 10 18 16 18 24C18 31 22 36 28 38V48H36V38C42 36 46 31 46 24C46 16 40 10 32 10Z" fill="#38bdf8"/>
-                <path d="M24 48H40" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-        </div>
-
         <h1>Book Recommendation Dashboard</h1>
-        <p>Discover your next favorite book </p>
+        <p>Discover your next favorite book</p>
     </header>
 
     <section class="dashboard">
+        <select id="language">
+            <option value="">Select Language</option>
+            <option value="english">English</option>
+            <option value="hindi">Hindi</option>
+        </select>
+
         <select id="category">
-            <option value="">Select your interest</option>
+            <option value="">Select Interest</option>
             <option value="thriller">Thriller</option>
             <option value="knowledge">Knowledge</option>
             <option value="business">Business</option>
@@ -180,31 +170,43 @@
 </div>
 
 <script>
-    const books = {
-        thriller: ["The Silent Patient","Gone Girl","Shutter Island","The Da Vinci Code","The Girl with the Dragon Tattoo"],
-        knowledge: ["Sapiens","Atomic Habits","Thinking, Fast and Slow","A Brief History of Time","The Power of Habit"],
-        business: ["Rich Dad Poor Dad","The Lean Startup","Zero to One","Think and Grow Rich","The 4-Hour Workweek"],
-        horror: ["It","The Shining","Dracula","The Exorcist","Bird Box"],
-        romance: ["Pride and Prejudice","Me Before You","The Notebook","It Ends With Us","Outlander"],
-        fiction: ["Harry Potter","The Alchemist","The Lord of the Rings","The Great Gatsby","Life of Pi"]
-    };
-
-    function showBooks() {
-        const category = document.getElementById("category").value;
-        const bookList = document.getElementById("bookList");
-        bookList.innerHTML = "";
-
-        if (!category) {
-            bookList.innerHTML = "<li>Please select an interest first.</li>";
-            return;
-        }
-
-        books[category].forEach(book => {
-            const li = document.createElement("li");
-            li.textContent = book;
-            bookList.appendChild(li);
-        });
+const books = {
+    english: {
+        thriller: ["The Silent Patient", "Gone Girl", "Shutter Island", "The Da Vinci Code", "The Girl with the Dragon Tattoo"],
+        knowledge: ["Sapiens", "Atomic Habits", "Thinking, Fast and Slow", "A Brief History of Time", "The Power of Habit"],
+        business: ["Rich Dad Poor Dad", "The Lean Startup", "Zero to One", "Think and Grow Rich", "The 4-Hour Workweek"],
+        horror: ["It", "The Shining", "Dracula", "The Exorcist", "Bird Box"],
+        romance: ["Pride and Prejudice", "Me Before You", "The Notebook", "It Ends With Us", "Outlander"],
+        fiction: ["Harry Potter", "The Alchemist", "The Lord of the Rings", "The Great Gatsby", "Life of Pi"]
+    },
+    hindi: {
+        thriller: ["रावण", "चाणक्य का नंदी", "काली बिल्ली", "रहस्य की रात", "खौफ"],
+        knowledge: ["भारत की खोज", "सत्य के प्रयोग", "हिंद स्वराज", "जीवन का विज्ञान", "गीतांजलि"],
+        business: ["धन प्रबंधन", "बिजनेस सूत्र", "शेयर बाजार की समझ", "स्टार्टअप मंत्र", "अमीर बनने की कला"],
+        horror: ["वेताल की कहानियाँ", "डरावनी कहानियाँ", "भूतनाथ", "रहस्य लोक", "खूनी रात"],
+        romance: ["गुनाहों का देवता", "निर्मला", "चित्रलेखा", "मधुशाला", "रश्मिरथी"],
+        fiction: ["गोदान", "राग दरबारी", "मैला आँचल", "तमस", "पिंजर"]
     }
+};
+
+function showBooks() {
+    const language = document.getElementById("language").value;
+    const category = document.getElementById("category").value;
+    const bookList = document.getElementById("bookList");
+
+    bookList.innerHTML = "";
+
+    if (!language || !category) {
+        bookList.innerHTML = "<li>Please select both language and interest.</li>";
+        return;
+    }
+
+    books[language][category].forEach(book => {
+        const li = document.createElement("li");
+        li.textContent = book;
+        bookList.appendChild(li);
+    });
+}
 </script>
 
 </body>
